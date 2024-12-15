@@ -51,7 +51,7 @@ void command1(const char* algorithm, const char* given_input, const char* output
 	cout << "-----------------------------------------\n";
 
 	// Running
-	int comp = 0;
+	long long comp = 0;
 
 	auto start = std::chrono::high_resolution_clock::now();
 	algo(arr, n, comp);
@@ -113,7 +113,7 @@ void command2(const char* algorithm, const char* input_size,
 	cout << "-----------------------------------------\n";
 
 	// Running
-	int comp = 0;
+	long long comp = 0;
 
 	auto start = std::chrono::high_resolution_clock::now();
 	algo(arr, n, comp);
@@ -170,7 +170,7 @@ void command3(const char* algorithm, const char* input_size, const char* output_
 		cout << "-----------------------------------------\n";
 
 		// Running
-		int comp = 0;
+		long long comp = 0;
 
 		auto start = std::chrono::high_resolution_clock::now();
 		algo(arr, n, comp);
@@ -225,8 +225,9 @@ void command4(const char* algorithm_1, const char* algorithm_2, const char* give
 	cout << "-----------------------------------------\n";
 
 	// Running
-	int comp1 = 0, comp2 = 0;
-	
+	long long comp1 = 0, comp2 = 0;
+	int* temp = duplicateArr(arr, n);
+
 	// Create team arr
 	auto start = std::chrono::high_resolution_clock::now();
 	algo1(arr, n, comp1);
@@ -238,7 +239,7 @@ void command4(const char* algorithm_1, const char* algorithm_2, const char* give
 
 	// Create team arr
 	start = std::chrono::high_resolution_clock::now();
-	algo2(arr, n, comp2);
+	algo2(temp, n, comp2);
 	end = std::chrono::high_resolution_clock::now();
 
 	// Calculate elapsed time
@@ -258,6 +259,7 @@ void command4(const char* algorithm_1, const char* algorithm_2, const char* give
 
 	// Release
 	delete[] arr;
+	delete[] temp;
 }
 
 void command5(const char* algorithm_1, const char* algorithm_2,
@@ -304,7 +306,8 @@ void command5(const char* algorithm_1, const char* algorithm_2,
 	cout << "-----------------------------------------\n";
 
 	// Running
-	int comp1 = 0, comp2 = 0;
+	long long comp1 = 0, comp2 = 0;
+	int* temp = duplicateArr(arr, n);
 
 	// Create team arr
 	auto start = std::chrono::high_resolution_clock::now();
@@ -317,7 +320,7 @@ void command5(const char* algorithm_1, const char* algorithm_2,
 
 	// Create team arr
 	start = std::chrono::high_resolution_clock::now();
-	algo2(arr, n, comp2);
+	algo2(temp, n, comp2);
 	end = std::chrono::high_resolution_clock::now();
 
 	// Calculate elapsed time
@@ -337,6 +340,7 @@ void command5(const char* algorithm_1, const char* algorithm_2,
 
 	// Release
 	delete[] arr;
+	delete[] temp;
 }
 
 void commandLine(int argc, char* argv[]) {
@@ -425,7 +429,7 @@ void testAlgorithm(const std::string name, int number){
 				int* arr = new int[size]; // Create arr
 				GenerateData(arr, size, order);
 				// Take note of S1, S2, S3, running time and number of comparisons
-				int comp = 0; int tie = 0;
+				long long comp = 0; int tie = 0;
 				// Sort the created array using the Sorting Algorithm S3
 
 					// Record start time
@@ -457,7 +461,7 @@ void testAlgorithm(const std::string name, int number){
 
 
 // Selection_sort
-void selection_sort(int* arr, int n, int& comp)
+void selection_sort(int* arr, int n, long long& comp)
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -475,7 +479,7 @@ void selection_sort(int* arr, int n, int& comp)
 
 
 // Quick sort
-int partition_1(int* arr, int l, int r, int& comps)
+int partition_1(int* arr, int l, int r, long long& comps)
 {
 	int pivot = arr[r];// chọn chốt là phần tử cuối bên phải
 	int i = l - 1;
@@ -494,7 +498,7 @@ int partition_1(int* arr, int l, int r, int& comps)
 	return i;// trả về vị trí của chốt
 }
 
-void quick_sort_1(int* arr, int l, int r, int& comps)
+void quick_sort_1(int* arr, int l, int r, long long& comps)
 {
 	if (l >= r)
 		return;
@@ -503,13 +507,13 @@ void quick_sort_1(int* arr, int l, int r, int& comps)
 	quick_sort_1(arr, p + 1, r, comps);
 }// lam voi phan hoach lomuto
 
-void quick_sort(int* arr, int n, int& comps)
+void quick_sort(int* arr, int n, long long& comps)
 {
 	quick_sort_1(arr, 0, n, comps);
 }
 
 // Insertion sort
-void InsertionSort(int* arr, int n, int& comp) {
+void InsertionSort(int* arr, int n, long long& comp) {
 	comp = 0;
 	for (int i = 0; i < n; i++) {
 		int key = arr[i];
@@ -528,7 +532,7 @@ void InsertionSort(int* arr, int n, int& comp) {
 }
 
 // Bubble sort
-void BubbleSort(int* arr, int n, int& comp) {
+void BubbleSort(int* arr, int n, long long& comp) {
 	comp = 0;
 	bool swapped;
 	for (int i = 0; i < n - 1; i++) {
@@ -548,7 +552,7 @@ void BubbleSort(int* arr, int n, int& comp) {
 }
 
 // Heap sort
-void Heapify(int* arr, int n, int i, int& comp) {
+void Heapify(int* arr, int n, int i, long long& comp) {
 	int max = i;         // Khởi tạo max là i
 	int left = 2 * i + 1;    // Chỉ số con trái
 	int right = 2 * i + 2;   // Chỉ số con phải
@@ -577,7 +581,7 @@ void Heapify(int* arr, int n, int i, int& comp) {
 	}
 }
 
-void HeapSort(int* arr, int n, int& comp) {
+void HeapSort(int* arr, int n, long long& comp) {
 	// Xây dựng Max Heap từ mảng
 	for (int i = n / 2 - 1; i >= 0; i--) {
 		Heapify(arr, n, i, comp);
@@ -591,7 +595,7 @@ void HeapSort(int* arr, int n, int& comp) {
 }
 
 // Merge Sort
-void Merge(int* a, int left, int mid, int right, int& comp) {
+void Merge(int* a, int left, int mid, int right, long long& comp) {
 	int n1 = mid - left + 1;
 	int n2 = right - mid;
 	int* L = new int[n1];
@@ -630,7 +634,7 @@ void Merge(int* a, int left, int mid, int right, int& comp) {
 	delete[] R;
 }
 
-void MergeSort(int* a, int left, int right, int& comp) {
+void MergeSort(int* a, int left, int right, long long& comp) {
 	if (left >= right)
 		return;
 	int mid = left + (right - left) / 2;
@@ -639,13 +643,13 @@ void MergeSort(int* a, int left, int right, int& comp) {
 	Merge(a, left, mid, right, comp);
 }
 
-void MergeSort(int* a, int n, int& comp) {
+void MergeSort(int* a, int n, long long& comp) {
 	MergeSort(a, 0, n, comp);
 }
 
 
 // Counting sort function to sort based on a specific digit
-void countingSort(int* arr, int n, int exp, int& comp) {
+void countingSort(int* arr, int n, int exp, long long& comp) {
 	int* output = new int[n];
 	int count[10] = { 0 };
 
@@ -666,7 +670,7 @@ void countingSort(int* arr, int n, int exp, int& comp) {
 	delete[] output;
 }
 
-void RadixSort(int* arr, int n, int& comp) {
+void RadixSort(int* arr, int n, long long& comp) {
 	comp = 0;
 
 	// Find max value

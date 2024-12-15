@@ -81,3 +81,11 @@ const char* getOrderName(int order) {
         return "Reversed";
     return "Unknown";
 }
+
+int* duplicateArr(int* arr, int n) {
+    int* temp = new int[n];
+    for (int i = 0; i < n; i++) {
+        temp[i] = arr[i];
+    }
+    return temp;
+}

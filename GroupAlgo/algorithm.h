@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-using FuncPtr = void (*)(int* arr, int n, int& comp);
+using FuncPtr = void (*)(int* arr, int n, long long& comps);
 
 // Commands: 
 // 1: [Execution file]-a [Algorithm] [Given input] [Output parameter(s)] #5
@@ -42,23 +42,23 @@ void testAlgorithm(const std::string name, int number);
 
 //# Nhóm thuật toán 1: (7 cái) -> 23h59 8/12/2024
 //Selection Sort, Quick Sort->Quân
-void selection_sort(int* arr, int n, int& comp);
+void selection_sort(int* arr, int n, long long& comps);
 
-void quick_sort(int* arr, int n, int& comps);
+void quick_sort(int* arr, int n, long long& comps);
 
 //Insertion Sort, Bubble Sort->Hòa
-void InsertionSort(int* arr, int n, int& comp);
+void InsertionSort(int* arr, int n, long long& comps);
 
-void BubbleSort(int* arr, int n, int& comp);
+void BubbleSort(int* arr, int n, long long& comps);
 
 //Heap Sort->Lộc
-void HeapSort(int* arr, int n, int& comp);
+void HeapSort(int* arr, int n, long long& comps);
 
 //Merge Sort->Khoa
-void MergeSort(int* a, int n, int& comp);
+void MergeSort(int* a, int n, long long& comps);
 
 //Radix Sort->Tường
-void RadixSort(int* arr, int n, int& comp);
+void RadixSort(int* arr, int n, long long& comps);
 
 
 
