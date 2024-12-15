@@ -552,34 +552,33 @@ void BubbleSort(int* arr, int n, long long& comp) {
 }
 
 // Heap sort
-void Heapify(int* arr, int n, int i, long long& comp) {
-	int max = i;         // Khởi tạo max là i
-	int left = 2 * i + 1;    // Chỉ số con trái
-	int right = 2 * i + 2;   // Chỉ số con phải
+void Heapify(int* arr, int n, int i, int& comp) {
+    int max = i;         // Khởi tạo max là i
+    int left = 2 * i + 1;    // Chỉ số con trái
+    int right = 2 * i + 2;   // Chỉ số con phải
 
-	// So sánh con trái
-	if (left < n) {
-		comp++; // Đếm so sánh left < n
-		if (arr[left] > arr[max]) {
-			comp++; // Đếm so sánh arr[left] > arr[max]
-			max = left;
-		}
-	}
+    // So sánh con trái
+    if (left < n) {
+        if (arr[left] > arr[max]) {
+            comp++; // Đếm so sánh giữa arr[left] và arr[max]
+            max = left;
+        }
+    }
 
-	// So sánh con phải
-	if (right < n) {
-		comp++; // Đếm so sánh right < n
-		if (arr[right] > arr[max]) {
-			comp++; // Đếm so sánh arr[right] > arr[max]
-			max = right;
-		}
-	}
-	comp++; // Đếm so sánh max != i
-	if (max != i) {
-		swap(arr[i], arr[max]);
-		Heapify(arr, n, max, comp); // Đệ quy tiếp tục
-	}
+    // So sánh con phải
+    if (right < n) {
+        if (arr[right] > arr[max]) {
+            comp++; // Đếm so sánh giữa arr[right] và arr[max]
+            max = right;
+        }
+    }
+
+    if (max != i) {
+        swap(arr[i], arr[max]);
+        Heapify(arr, n, max, comp); // Đệ quy tiếp tục
+    }
 }
+
 
 void HeapSort(int* arr, int n, long long& comp) {
 	// Xây dựng Max Heap từ mảng
