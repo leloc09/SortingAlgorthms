@@ -509,7 +509,7 @@ void quick_sort_1(int* arr, int l, int r, long long& comps)
 
 void quick_sort(int* arr, int n, long long& comps)
 {
-	quick_sort_1(arr, 0, n-1, comps);
+	quick_sort_1(arr, 0, n, comps);
 }
 
 // Insertion sort
@@ -644,7 +644,7 @@ void MergeSort(int* a, int left, int right, long long& comp) {
 }
 
 void MergeSort(int* a, int n, long long& comp) {
-	MergeSort(a, 0, n-1, comp);
+	MergeSort(a, 0, n, comp);
 }
 
 
